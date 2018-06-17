@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>schemaType</h1>
+    <ul>
+        <li>
+            字符串
+            <ul>
+                <li>
+                    lowercase:true 在保存前将字符串小写
+                </li>
+                <li>
+                    uppercase:true 调用大写
+                </li>
+                <li>
+                    trim:是否调用trim()
+                </li>
+                <li>
+                    match:一个验证器，检查值是否与给定的正则表达式进行匹配
+                </li>
+                <li>
+                    enum:设置枚举值，检查值必须在给定的数组中
+                </li>
+            </ul>
+        </li>
+        <li>
+            Number:
+            <ul>
+                <li>
+                    min:最小值
+                </li>
+                <li>
+                    max:最大值
+                </li>
+            </ul>
+        </li>
+        <li>
+            日期
+            <ul>
+                <li>
+                    min
+                </li>
+                <li>
+                    max
+                </li>
+            </ul>
+        </li>
+        <li>
+            所有模式类型
+            <ul>
+                <li>
+                    required:布尔值或函数。
+                </li>
+                <li>
+                    default:任何功能，设置路径的默认值，如果改值是一个函数，则哈数的返回值被作为默认值。
+                </li>
+                <li>
+                    select:布尔值，指定查询的默认投影
+                </li>
+                <li>
+                    validate:为属性添加一个验证器函数。
+                </li>
+                <li>
+                    get
+                </li>
+                <li>
+                    set
+                </li>
+                <li>
+                    alias:string,使用给定名称获取、设置此路径来定义虚拟。
+                </li>
+                <li>
+
+                </li>
+            </ul>
+        </li>
+        <li>
+            Arrays:创造各种数据类型或子文档的数组的方法
+            <ul>
+                <li>
+                    [Buffer]
+                </li>
+                <li>
+                    [String]
+                </li>
+                <li>
+                    [Number]
+                </li>
+                <li>
+                    []
+                </li>
+            </ul>
+        </li>
+        <li>
+            Mixed:可以使用任意的类型
+        </li>
+    </ul>
+</body>
+</html>

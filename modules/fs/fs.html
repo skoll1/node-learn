@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>f3就在这里</h1>
+	<ul>
+		<li>
+			在Node中，用fs模块来实现所有有关文件及其目录的创建，写入，以及删除操作。
+		</li>
+		<li>
+			所有对文件及其目录的操作都有同步和异步方法。在绝大多数情况下，都使用同步方法，但是在很少的场景（读取配置文件并启动服务器），应该使用同步方法。
+		</li>
+		
+	</ul>
+	<h1>读文件</h1>
+	<ul>
+		<li>readFile()</li>
+		<li>readFileSync()</li>
+		<li>createReadStream()</li>
+		<li>options对象
+			<ul>
+				<li>flag:对文件采取什么操作</li>
+				<li>encoding:采取何种编码来读取文件</li>
+			</ul>
+		</li>
+
+	</ul>
+	<h1>写文件</h1>
+	<ul>
+		<li>
+			writeFile(filename,data,options,cb)
+		</li>
+		<li>
+			可以连续调用来后续添加数据也可以
+		</li>
+		<li>
+			appendFile():把数据放到一个文件的底部。或者appendFileSync()。
+		</li>
+		<li>
+			writeFileSync()
+		</li>
+		<li>
+			createWriteStream
+		</li>
+		<li>
+			options
+			<ul>
+				<li>
+					flag:对于该文件采取何种操作
+				</li>
+				<li>
+					mode:用于指定当文件打开时的读写权限，默认值为0666（可读写）
+				</li>
+				<li>
+					encoding:
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<h1>从指定位置读写文件,分俩步</h1>
+	<ul>
+		<li>
+			打开文件fs.openFile(filename,(err,fd)=>{
+
+			})
+		</li>
+		<li>
+			在指定位置读取
+		</li>
+		<li>
+			确保最后的数据都写入文件fs.fsync(fd,cb):当数据读完不代表数据已经写完，很可能现在只是在内存里面，所以必须保证同步关闭。
+		</li>
+		<li>
+			关闭文件：fs.closeFile(fd,cb):这个是个打开一一对应的。
+		</li>
+	</ul>
+<h1>创建目录</h1>
+<ul>
+	<li>
+		fs.mkdir(1,2,3)
+	</li>
+	<li>
+		1:需要创建的绝对路径
+	</li>
+	<li>
+		2:指定目录的权限默认值为0777
+	</li>
+	<li>
+		3:回调函数
+	</li>
+	<li>
+		fs.mdkirsync(1,2)
+	</li>
+	<li>
+		1:路径
+	</li>
+	<li>
+		2:mode:就只有两个参数。
+	</li>
+</ul>
+<h1>读取目录</h1>
+<ul>
+	<li>
+		fs.readdir(path,cb(err,files));
+	</li>
+</ul>
+<h1>查看与需要改文件或目录的信息</h1>
+<ul>
+	<li>
+		fs.lasat(path,cb(err,stats))
+	</li>
+	<li>
+		由于是查看的文件信息，所以对于stats来说
+		<ul>
+			<li>
+				有以下方法:所有方法不带参数
+			</li>
+			<li>isFile()</li>
+			<li>isDirectory():对象是否是一个目录</li>
+			<li>isBlockDevice():被查看文件是否是一个块设备文件</li>
+			<li>isCharacterDecvice()是否为一个字符设备文件。</li>
+			<li>isSymbolickLink().是否为一个符号链接文件。</li>
+			<li>
+				isFIFO：被查看文件是否是一个FIFO文件。
+			</li>
+			<li>
+				isSocket:是否为一个cocket文件
+			</li>
+			<li>
+				还有以下属性：直接打印显示
+			</li>
+			<li>
+				dev:文件或目录所在设备ID.
+			</li>
+			<li>
+				info:文件或目录的索引编号
+			</li>
+			<li>
+				mode:文件或目录的权限标志
+			</li>
+			<li>
+				nlink:文件或目录的硬连接数量
+			</li>
+			<li>
+				uid:文件或目录所有者的Id.
+			</li>
+			<li>
+				gid:文件或目录的组id
+			</li>
+			<li>
+				rdev：字符设备文件或块设备文件所在设备的id
+			</li>
+			<li>
+				size:文件尺寸
+			</li>
+			<li>
+				atime:文件的访问时间
+			</li>
+			<li>
+				mtime:文件的修改时间
+			</li>
+			<li>
+				ctime:文件的创建时间。
+			</li>
+		</ul>
+	</li>
+	<li>
+		fs.stat(path,cb(err,stats)):看不到文件符号链接文件。
+	</li>
+	<li>
+		在文件被open方法打开后，可以使用fs.fstat(fd,cb)查看打开文件的信息。
+	</li>
+	<li>
+		fs.fstatSync(fd,cb)配合打开的同步方法来查看打开文件的信息。
+	</li>
+</ul>
+<h1>查看文件或目录是否存在</h1>
+<ul>
+	<li>
+		fs.exists(path,cb(exists))
+	</li>
+	<li>
+		回调函数里面的exists是一个布尔值。
+	</li>
+</ul>
+<h1>获取文件或目录的绝对路径</h1>
+<ul>
+	<li>fs.realpath('path',cache,cb(err,reslovePath))</li>
+</ul>
+<h1>修改文件访问时间以及修改时间</h1>
+<ul>
+	<li>
+		fs.utimes(path,atime,mtime,cb(err))
+	</li>
+</ul>
+<h1>修改文件或目录的读写权限</h1>
+<ul>
+	<li>
+		fs.chmod(path,mode,cb(err))
+	</li>
+	<li>
+		fs.fchmod(fd,mode,cb(err))
+	</li>
+</ul>
+<h1>移动文件目录</h1>
+<ul>
+	<li>
+		fs.rename(old,new,cb(err))
+	</li>
+</ul>
+<h1>创建于删除文件的硬链接</h1>
+<ul>
+	<li>
+		fs.link(srcpath,dstpath,cb(err))
+	</li>
+	<li>fs.unlink(path,cb(err))</li>
+</ul>
+<h1>创建于查看符号连接</h1>
+<ul>
+	<li>符号连接是一种特殊的文件，这个文件中仅包含了另一个文件或目录的路径以及文件名</li>
+	<li>
+		如果打开一个文件的符号链接文件进行编辑，操作系统将打开符号连接中所指向的原文件进行编辑，如果打开一个目录的符号链接文件进行创建，编辑或者删除操作，那么操作系统也会打开相应的文件进行操作。
+	</li>
+	<li>fs.symlink()</li>
+</ul>
+<h1>截断文件</h1>
+<ul>
+	<li>
+		fs.truncate()
+	</li>
+	<li>
+		首先清除文件的一部分内容，然后改变文件的尺寸。
+	</li>
+</ul>
+<h1>删除空目录</h1>
+<ul>
+	<li>
+		fs.rmdir(path,cb());
+	</li>
+</ul>
+<h1>监视文件或目录</h1>
+<ul>
+	<li>
+		var watch=fs.watch:这个也可以进行监视
+	</li>
+	<li>
+		这个返回一个监视对象，
+		<ul>
+			<li>
+				watch.close():停止监视
+			</li>
+			<li>
+				watch.on('change',(event,filename)=>{
+				<!-- 文件或目录的任何文件发生变化的都会触发change事件 -->
+				})
+			</li>
+		</ul>
+	</li>
+	<li>
+		fs.watchFile(filename,[options],cb(curr,prev))
+	</li>
+	<li>
+		curr:修改之后的当前文件
+	</li>
+	<li>
+		prev:修改之前的当前文件
+	</li>
+	<li>
+		options
+		<ul>
+			<li>
+				persistent:当指定了被监视的文件之后是否停止当前正在运行的程序，默认为true.
+			</li>
+			<li>
+				interval:监视的频率。
+			</li>
+		</ul>
+	</li>
+	<li>
+		取消监视：fs.unwatchFile(filename,cb(err))
+	</li>
+</ul>
+</body>
+</html>

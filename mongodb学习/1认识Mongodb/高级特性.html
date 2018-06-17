@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        固定集合：最新入职员工。根据这个特性调整功能。页面的实现功能是前后端妥协的结果。
+    </h1>
+    <ul>
+        <li>
+            一个环形队列，当集合空间用完之后，在插入元素就会覆盖最开始的元素。
+        </li>
+        <li>
+            属性
+            <ul>
+                <li>
+                    对固定的集合进行插入速度极快
+                </li>
+                <li>
+                    按照插入顺序的查询输出速度很快
+                </li>
+                <li>
+                    能够在插入最新的数据时，淘汰最早的数据。
+                </li>
+            </ul>
+        </li>
+        <li>
+            用法：存储日志信息，缓存一些少量的文档 。读比较多。
+        </li>
+    </ul>
+    <h1>
+        GridFS规范
+    </h1>
+    <ul>
+        <li>
+            将大型文件存在数据库中的规范
+        </li>
+        <li>
+            mongofiles put filename
+        </li>
+        <li>
+            mongofiles get filename
+        </li>
+        <li>
+            使用两个表来存储数据
+            <ul>
+                <li>
+                    files:包含元数据对象
+                    <ul>
+                        <li>
+                            filename:存储的文件名
+                        </li>
+                        <li>
+                            chunkSize:chunk的大小
+                        </li>
+                        <li>
+                            uploadDate:入库时间
+                        </li>
+                        <li>
+                            md5:文件的md5码
+                        </li>
+                        <li>
+                            length:文件的大小
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    chunks包含其他一些相关信息的二进制块。
+                    <ul>
+                        <li>
+                            id:
+                        </li>
+                        <li>
+                            files_id:这个比较重要的是“n”，代表chunk的序号，此序号从0开始，
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h1>map reduce模型编程</h1>
+    <ul>
+        <li>
+            一种计算模型，简单的来说就是将大批量的工作分解执行，然后将结果合并成最终的结果。
+        </li>
+    </ul>
+</body>
+</html>

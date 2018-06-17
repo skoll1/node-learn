@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<section>
+		<h1>cookieParse</h1>
+		<ul>
+			<li>
+				cookie类型
+			</li>
+			<li>
+				常规cookie
+			</li>
+			<li>
+				签名cookie
+			</li>
+			<li>
+				特殊的JSON Cookie
+			</li>
+			<li>
+				你可以在cookie会话中存放任意类型的文本数据，通常是在客户端存放一个会话cookie.这样就能在服务端保存用户的完整状态。
+			</li>
+		</ul>
+	</section>
+	<section>
+		<h1>
+			bodyParser():POST请求解决
+		</h1>
+		<ul>
+			<li>
+				所有的web程序都需要接受用户输入。
+			</li>
+			<li>
+				bodyParse中间件给你提供了req.body属性，可以用来解析上传数据。(基于Content-type解析数据)程序只需要关心req.body数据对象的结果即可
+			</li>
+			<li>
+				文件上传。req.files（底层用formiable模块完成）
+			</li>
+		</ul>
+	</section>
+	<section>
+		<h1>limit():请求主题的限制</h1>
+		<ul>
+			<li>
+				必须正确分类可接受的请求，并在恰当的时候对他们加以限制。
+			</li>
+			<li>
+				过滤巨型请求。
+			</li>
+		</ul>
+		<script type="text/javascript">
+			// 根据请求的content-type来限制主体大小
+			function type(type,fn){
+				var ct=req.header['content-type']||'';
+				if(ct.includes(type)){
+					return next();
+				}
+				fn(req,res,next);
+			}
+
+		</script>
+	</section>
+
+	<section>
+		<h1>query():查询字符串解决</h1>
+		<ul>
+			<li>
+				为程序提供req.query对象。
+			</li>    
+		</ul>
+	</section>
+	<section>
+		<h1>
+			logger():强大的日志输出记录
+		</h1>
+		<ul>
+			<li>
+				订制日志格式
+			</li>
+			<li>
+				定义定制指令 token.
+			</li>
+			<li>
+				日志选项记录
+			</li>
+		</ul>
+	</section>
+	<section>
+		<h1>favicon():</h1>
+		<ul>
+			<li>一般放在最顶端</li>
+			<li>
+				确定缓存时间
+			</li>
+		</ul>
+	</section>
+	<section>
+		<h1>methodOverride()伪造http方法</h1>
+		<ul>
+			<li>
+				使用特殊谓词的服务器：PUT,DELETE
+			</li>
+			<li>
+				提供了req.method对象
+			</li>
+			<li>
+				可以随时访问原来的对象.req.originalMethod.
+			</li>
+		</ul>
+	</section>
+	<section>
+		<h1>Vhost</h1>
+		<ul>
+			<li>
+				把请求转发到运行在不同端口的本地服务器哪里
+			</li>
+		</ul>
+	</section>
+	<section>
+		<h1>static()提供静态文件</h1>
+	</section>
+	<section>
+		<h1>compress()压缩静态文件</h1>
+		<p>这个好像自带了吧static()</p>
+	</section>
+	<section>
+		<h1>directory(）目录列表</h1>
+	</section>
+	<section>
+		<h1>errorHandler()：开发错误提示。</h1>
+		<ul>
+			<li>
+				放在最后面，提供详细的错误。
+			</li>
+		</ul>
+	</section>
+	<section>
+		<h1>
+			csrf:生成一个24个字符的唯一Id,认证令牌，然后这个令牌会作为影藏的输入控件_scrf出现在表单上，csrf会在提交时验证这个令牌，每次提交都会价差
+		</h1>
+		<ul>
+			<li>
+				csrf（）访问默认属性req.body._scrf属性。
+			</li>
+		</ul>
+	</section>
+</body>
+</html>

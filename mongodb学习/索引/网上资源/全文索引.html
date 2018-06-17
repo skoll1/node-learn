@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>四种查询方式</h1>
+    <ul>
+        <li>
+            单条记录查询 db.testCollection.find({$text:{$search:"aaa"}})
+        </li>
+        <li>
+            用空格隔开实现多字段索引查询 db.testCollection.find({$text:{$search:"aa bb cc"}}) “或” ，满足所有条件才会成功返回
+        </li>
+        <li>
+            -来实现不能含有指定字段 db.testCollection.find({$test:{$search:"aa -bb"}})
+        </li>
+        <li>
+            /来实现且查询 db.testCollection.find({$text:{$search:"  \"aa"  \"bb" "}},{score:{$meta:"textScore"}}).sort({score:{$meta:"textScore"})
+        </li>
+        <li>
+            全文索引也必须是完整的字段，对于英文来说，必须是完整的单次，因为每两个单次之间天然的有空格，所以实现检索非常方便，如果汉子也能按词分类的话，也是可以照样实现的，但是那些大段的检索就很难实现了，但是我们可以人为的分割字段，找出这段字的关键字信息。然后通过找到这个小的字段而找到他从属的信息。
+        </li>
+        <li>
+            相似度查询：全文索引相似度查询，还可以按照相似度返回。
+        </li>
+    </ul>
+    <h1>
+        全文索引选项
+    </h1>
+    <ul>
+        <li>
+            weight:document。设置为文本索引字段的权重，权重值为1-99999
+        </li>
+        <li>
+            default_lanaguage:设置文本分词的语言，默认为english
+        </li>
+        <li>
+            langage_overrride:使用文档中的一个字段的值作为设置文本分词的语言，默认为lanaguage。
+        </li>
+        <li>
+            textIndexVersion:integer 版本号，可以是1或者2。
+        </li>
+  
+    </ul>
+    <h1>创建</h1>
+    <ul>
+        <li>
+                db.getCollection('stores').createIndex({"name":"text"}) 最简单
+        </li>
+    </ul>
+
+    <h1>使用限制</h1>
+    <ul>
+        <li>
+            每次只能指定一个$text查询。
+        </li>
+        <li>
+            $text查询不能出现在$nor查询中
+        </li>
+        <li>
+            查询中如果包含了$text.hint将不再起作用。
+        </li>
+        <li>
+            
+        </li>
+    </ul>
+</body>
+</html>

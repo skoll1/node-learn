@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>
+			使用TLS:如果应用程序处理或者传输敏感数据，使用TLS传输层安全性来保护连接和数据。在客户端给数据加密然后从客户机发送到服务器，防止某写常见的黑客攻击。主要是包嗅探和中间人攻击。
+		</li>
+		<li>
+			使用Helmet：通过适当的设置http头，可以避免遭受一些常见的web漏洞。
+		</li>
+		<li>
+			安全的使用cookie
+			<ul>
+				<li>
+					httpOnly:只通过https发送cookie，有助于防御跨站脚本编制攻击。不能用脚本访问cookie.
+				</li>
+				<li>
+					secure:https发送cookie
+				</li>
+				<li>
+					domain:表示cooki的域，用于和请求URL的服务器和域进行比较，如果匹配。那么接下来检查路径属性。
+				</li>
+				<li>
+					path:表示cookie的路径。用于和请求路径进行比较，如果路径和域都匹配，那么在请求中发送cookie.
+				</li>
+				<li>
+					expiress:设置到期日期。
+				</li>
+			</ul>
+		</li>
+		<li>
+			确保依赖的安全。
+			<ul>
+				<li>
+					nsp:检查当前项目的漏洞
+				</li>
+			</ul>
+		</li>
+		<li>
+			实施速率限制：防止针对认证的暴力攻击
+			<ul>
+				<li>
+					StrongLoop api 
+				</li>
+				<li>
+					express-limiter
+				</li>
+			</ul>
+		</li>
+		<li>
+			csuf
+		</li>
+		<li>
+			始终过滤和净化用户的输入，防御跨站点脚本编制和命令注入攻击。
+		</li>
+		<li>
+			使用参数化查询或者预编译的语句来避免SQL注入。
+		</li>
+		<li>
+			不断更新：https://nodesecurity.io/#pricing node安全公报
+		</li>
+	</ul>
+	<h1>web安全漏洞</h1>
+</body>
+</html>

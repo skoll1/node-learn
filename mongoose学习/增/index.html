@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>文件增加</h1>
+    <ul>
+        <li>
+            基于document级别的save()方法。需要先实例化，然后使用方法保存文档。对单条数据进行存储
+        </li>
+        <li>
+            基于model级别的create()方法。不需要实例化，可以同时新增多个文档。
+        </li>
+        <li>
+            基于model级别的insertMany()方法。多条数据批量处理
+        </li>
+    </ul>
+    <h1>插入</h1>
+    <ul>
+        <li>
+            使用insert()和save方法向集和中插入文档，如果该集合不再数据库中，那么mg会自动创建该集合并插入文档
+        </li>
+        <li>
+            区别：
+            <ul>
+                <li>
+                    不指定_id字段时，save()方法类似于insert()方法，如果指定_id字段，则会更新_id的数据
+                </li>
+                <li>
+                    使用save函数，如果原来的数据不存在，那么他们两者都会向collection里面插入数据，如果已经存在，save则会调用update更新数据，insert直接忽略。
+                </li>
+                <li>
+                    insert可以一次性插入一个列表，不需要要遍历，效率高，save则需要遍历列表，一个个插入
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>解决单点数据库服务器的IO能力，最终解决数据库扩展性的问题</h1>
+    <ul>
+        <li>
+            sharding架构是一种将海量数据水平扩展的系统，数据分布存储在sharding的各个节点上，使用者通过很小的配置就可以很方便的构建一个分布式的mg集群。
+        </li>
+        <li>
+            mg流程：客户端请求先进入前端路由，首先询问配置服务器需要到哪个shard上查询或者保存记录，然后链接相应的shard执行操作，最后将结果返回客户端。客户端只需要将
+            原本发送给mongod的查询发送给路由进程，而不必关心所操作的记录存储在哪个shard上。
+        </li>
+        <li>
+            如何构建一个简单的sharding Cluster
+        </li>
+        <li>
+            维护sharding
+        </li>
+        <li>
+            列出所有sharding
+        </li>
+        <li>
+            查看sharding
+        </li>
+        <li>
+            判断是否是sharding
+        </li>
+        <li>
+            对现有表进行sharding
+        </li>
+        <li>
+            新增sharding server/移除
+        </li>
+    </ul>
+</body>
+</html>

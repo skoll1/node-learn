@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        mongoose.connect(url,options)
+    </h1>
+    <ul>
+        <li>
+            options对象将被传递给底层驱动程序。这里包含的所有选项优于先连接的字符串中传递的选项
+        </li>
+        <li>
+            副本集的连接
+        </li>
+        <li>
+            多个连接
+        </li>
+    </ul>
+    <script>
+        var options={
+            db:{
+                native_parser:true,
+            },
+            server:{
+                poolSize:5
+                // 驱动为此次连接保持打开的最大套接字数量，默认情况是5
+            },
+            replset:{
+                rs_name:'myrepliceSetName'
+            },
+            user:'myUserName',
+            pass:'myPassword',
+            // bufferCommands:
+            // 禁用mongoose的缓冲机制
+
+            autoReconnect:true,
+            // 底层的MongoDB驱动程序会在失去与MongoDB的连接时自动尝试重新连接
+
+            keepAlive:120,
+            // 对于长时间运行的程序，启用keepalive毫秒数通常是谨慎的
+
+        }
+        mongoose.connect(url,options,err=>{
+            // 还能来个回调函数
+        })
+    </script>
+</body>
+</html>

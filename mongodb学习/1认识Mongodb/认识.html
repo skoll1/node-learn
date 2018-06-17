@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    特点
+    <ul>
+        <li>
+            分布式
+        </li>
+        <li>
+            可扩展
+        </li>
+        <li>
+            不需要固定的表结构，不需要连接操作，大量数据的存取上有很大的优势。
+        </li>
+    </ul>
+    <h1>产生原因</h1>
+    <ul>
+        <li>
+            数据库高并发读写的需求
+        </li>
+        <li>
+            海量数据的高效存储和访问
+        </li>
+        <li>
+            数据库的高扩展和高可用性的需求
+        </li>
+        <li>
+            并不是非要读写一致性，有些场合对写一致性也不是非常需求。因此关系数据库的事务管理系统是没必要的东西。
+        </li>
+        <li>
+            从产品的需求来看，并不是很需要复杂的连集查询。
+        </li>
+    </ul>
+    <h1>种类及其特性：根据以下特点来选择适用场景的数据</h1>
+    <ul>
+        <li>
+            满足海量的存储需求和访问的面向文档的数据库JSON
+            <ul>
+                <li>
+                    面向文档的非关系数据库主要解决的不是高性能的并发读写，而是在保证海量数据存储的需求下，具有良好的查询性能
+                </li>
+                <li>
+                    mongodb:海量数据的访问效率
+                </li>
+                <li>
+                    CouchDB:访问方式是纯的rest API，可以直接使用js来操作CouchDB数据库。
+                </li>
+            </ul>
+        </li>
+        <li>
+            满足极高读写性能的KEY-VALUE数据库
+            <ul>
+                <li>
+                    redis
+                </li>
+                <li>
+
+                </li>
+            </ul>
+        </li>
+        <li>
+            满足高可扩展性和可用性的面向分布式的数据库
+        </li>
+    </ul>
+    <h1>MongoDB的特点</h1>
+    <ul>
+        <li>
+           面象集合存储 
+        </li>
+        <li>
+            模式自由
+        </li>
+        <li>
+            支持动态查询
+        </li>
+        <li>
+            支持完全索引
+        </li>
+        <li>
+            支持复制和故障恢复
+        </li>
+        <li>
+            支持二进制存储数据
+        </li>
+        <li>
+            自动处理碎片，以支持云计算层次的扩展
+        </li>   
+        <li>
+            查询监视：包含一系列的监视工具来分析数据库之间的操作性能
+        </li>
+        <li>
+            
+        </li>
+        <li></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>mg性能检测</h1>
+    <ul>
+        <li>
+            mongosniff:从底层监控有哪些命令发送给了mg. sniffer
+        </li>
+        <li>
+            mongostat:可以快速的查看运行中的MG实例的统计信息。每秒更新一次。
+        </li>
+        <li>
+            db.serverStatus:显示更加全面具体的信息，但是一个缺陷是数据是静态的
+        </li>
+        <li>
+            db.stats()查看特定数据库的详细运行状态
+        </li>
+        <li>
+            HTTP 监控接口
+        </li>
+    </ul>
+
+    <h1>mg常用性能方案</h1>
+    <ul>
+        <li>
+            创建索引
+        </li>
+        <li>
+            限制返回结果条数
+        </li>
+        <li>
+            只查询用到的字段
+        </li>
+        <li>    
+            采取 Capped Collection
+        </li>
+        <li>
+            采用Server side code Execution命令集
+        </li>
+        <li>
+            强制使用索引查询
+        </li>
+        <li>
+            采用优化器
+        </li>
+        <li>
+            很多优化技巧只有在实际过程中才能体会其精髓，以事实为依据。
+        </li>
+    </ul>
+    <h1>影响性能优化的条件</h1>
+    <ul>
+        <li>
+            操作系统故障
+        </li>
+        <li>
+            网络
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>content是一个node中间件框架，每个中间件在http处理中通过改写request，response的数据，状态。实现了特定的功能</li>
+		<li>
+			分类
+			<ul>
+				<li>
+					改写request的原始数据
+				</li>
+				<li>
+					改写response，request
+				</li>
+				<li>
+					全局异常处理，改写response数据。
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<h1>中间件的顺序</h1>
+	<ul>
+		<li>
+			忽略next会导致后续中间件停止执行:执行用户认证，如果没有权限，就不调用next();
+		</li>
+		<li>
+			按照对你有利的顺序组织中间件的顺序
+		</li>
+		<li>
+			利用中间件进行认证
+		</li>
+		<li>
+			随时做开关。
+		</li>
+	</ul>
+	<h1>中间件的挂载</h1>
+	<ul>
+		<li>
+			可以使程序使用相对路径来写
+		</li>
+		<li>
+			请求可以用相同的中间件，共享同样的状态。
+		</li>
+	</ul>
+	<h1>
+		可配置的中间件
+	</h1>
+	<ul>
+		<li>
+			使用闭包来实现。
+		</li>
+		<li>
+			使用的时候只需要传入参数就可以。
+		</li>
+	</ul>
+	<h1>中间件的构建</h1>
+	<ul>
+		<li>
+			只关注那些小的，可以重用的部分。
+		</li>
+		<li>
+			自行处理错误程序
+		</li>
+		<li>
+			使用多个错误处理中间件，将错误分离出来。
+			
+		</li>
+	</ul>
+	<h1>
+		bodyParse:解析客户端请求body中的内容，内部使用JSON编码处理，url编码处理以及文件的上传处理。
+	</h1>
+</body>
+</html>

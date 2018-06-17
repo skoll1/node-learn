@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>文档更新</h1>
+    <ul>
+        <li>
+            update()
+            
+            <ul>
+                <li>
+                    1:查询条件:如果设置的查找条件，数据库里面的数据并不满足，默认则什么事都不会发生。
+                </li>
+                <li>
+                    2:要修改的条件
+                </li>
+                <li>
+                    3:options控制选项
+                    <ul>
+                            <li>
+                                safe:默认为true.安全模式
+                            </li>
+                            <li>
+                                upsert:默认为false.如果不存在则创建新的记录。是一个参数找不到的时候才会进行这个
+                            </li>
+                            <li>
+                                multi:默认为false.是否更新多个查询记录
+                            </li>
+                            <li>
+                                runValidators:如果值为true,执行Validation验证
+                            </li>
+                            <li>
+                                setDefaultOnInsert:结合前面upsert选项进行，在新建时插入文档定义的默认值。
+                            </li>
+                            <li>
+                                strict:以strict模式进行更新
+                            </li>
+                            <li>
+                                overwrite:默认为false.禁用update-only模式，允许覆盖记录。
+                            </li>
+                        </ul>
+                </li>
+                <li>
+                    4:回调函数:回调函数不能省略的，否则数据不会发生更新，如果回调函数里面没有什么有用的信息，则可以使用exec()简化代码
+                </li>
+            </ul>
+        </li>
+        <li>
+            updateMany():和上一个的区别唯一是他会默认更新多个文档
+        </li>
+        <li>
+            find+save():如果更新的操作比较复杂，可以使用这种方法。比如，找到所有的年零小于10的数据，给他们的名字后面加上小孩这两个字符。
+        </li>
+        <li>
+            updateOne():只能更新找到的一条数据，即使是设置{multi:true}也无法同时更新多个文档。
+        </li>
+        <li>
+            findOne+save()
+        </li>
+        <li>
+            findByInAndUpdate()
+        </li>
+        <li>
+            findOneAndUpdate()
+        </li>
+    </ul>
+    <h1>exec()</h1>
+    <p>
+        用于检索字符串中的正则表达式的匹配。如果字符串中有匹配的值返回该匹配值，否则返回null.
+    </p>
+</body>
+</html>

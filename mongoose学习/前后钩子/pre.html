@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>前后钩子实现中间件的功能，对某些操作进行代理，在执行某些操作的时候可以执行的函数，他是使用在schema上的函数。类似于静态方法或者实例方法</h1>
+    <h1>pre</h1>
+    <ul>
+        <li>
+            可以在数据库执行以下操作的时候，设置前后钩子
+            <ul>
+                <li>
+                    init()
+                </li>
+                <li>
+                    validate()
+                </li>
+                <li>
+                    save()
+                </li>
+                <li>
+                    findOne()
+                </li>
+                <li>
+                    findOneAndRemove()
+                </li>
+                <li>
+                    findOneAndUpdate()
+                </li>
+                <li>
+                    insertMany()
+                </li>
+                <li>
+                    update()
+                </li>
+                <li>
+                    注意：一定要在回调函数里面加上next()让他可以向下传递数据
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

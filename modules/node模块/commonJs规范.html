@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>
+			加载模块是同步的，只有加载完成才能执行后面的操作。
+		</li>
+		<li>
+			每一个文件就是一个模块，有自己的作用域，在一个文件里面定义的变量，函数，类，都是私有的，对其他文件不可见。
+		</li>
+		<li>
+			node内部提供一个Module构建函数，所有模块都是Module实例。
+			<ul>
+				<li>有以下属性</li>
+				<li>id</li>
+				<li>filename</li>
+				<li>loaded：是否加载完</li>
+				<li>parent</li>
+				<li>children</li>
+				<li>exports：对外输出的值</li>
+			</ul>
+		</li>
+		<li>
+			在每个模块内部。module代表当前模块，这个变量是一个对象，他的exports属性才是对外的接口，加载某个模块，其实是加载该模块的module.exports属性
+		</li>
+		<li>
+			require用于加载模块，读入并执行一个js文件，然后返回该模块的exports对象。
+		</li>
+		<li>
+			exports变量，为了方便，node为每个模块提供了一个exports变量，指向module.exports。
+		</li>
+		<li>
+			如果一个模块只有一个对外接口，那么只能用module.export输出
+		</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>文档验证</h1>
+    <ul>
+        <li>
+            为了避免以下情况
+            <ul>
+                <li>缺少字段也可以保存的情况</li>
+                <li>
+                    未设置的字段也是可以保存在数据库里面
+                </li>
+                <li>包含字段类型与设置不同的字段的文档也可以保存成功</li>
+            </ul>
+        </li>
+    </ul>
+    <h1>常用验证</h1>
+    <ul>
+        <li>
+           通用
+           <ul>
+               <li>
+                   required:将age设置为必填字段，如果没有这个字段，文档将不会被保存，且出现错误提示
+               </li>
+               <li>
+                   default:默认值
+               </li>
+               <li>
+                   validate:自定义匹配
+               </li>
+           </ul>
+        </li>
+        <li>
+            数字：
+            <ul>
+                <li>
+                    min:0
+                </li>
+                <li>
+                    max:10
+                </li>
+            </ul>
+        </li>
+        <li>
+            字符串：
+            <ul>
+                <li>
+                    match:正则匹配
+                </li>
+                <li>
+                    enum:枚举['a','b','c']必须出现这三个，才可以，不然是不会保存的
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h1>验证</h1>
+    <ul>
+        <li>
+            验证在schemaType中定义
+        </li>
+        <li>
+            验证是中间件。
+        </li>
+        <li>
+            验证不再未定义的值上运行，除了required
+        </li>
+        <li>
+            验证时异步递归的，当调用model.save时，也会执行子文档验证，如果发生错误，您的model回调会受到他。
+        </li>
+        <li>
+            验证是可以定制的
+        </li>
+    </ul>
+    <h1>内置的验证器</h1>
+    <h1>自定义的验证器</h1>
+    <ul>
+        <li>
+            定义嵌套对象上的验证器是非常棘手的。
+        </li>
+        <li>
+            验证器的更新
+        </li>
+    </ul>
+    <script>
+        var breakfastSchema=new Schema({
+            eggs:{
+                type:Number,
+                min:[6,'Too few eggs'],
+                // 数字不仅可以枚举，还可以以这种方式枚举
+            },
+            bacon:{
+                type:Number,
+                require:[true,'why no bacon'],
+                // require也可以这样枚举
+                
+            },
+            drink:{
+                type:String,
+                enum:['coffee','tea'],
+                require:function(){
+                    return this.bacon>3
+                }
+                // require还可以变成一个函数，来实现一些前置条件的判断
+            }
+        })
+        
+    </script>
+</body>
+</html>

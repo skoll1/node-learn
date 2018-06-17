@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>模式有几个可配置的选项</h1>
+    <ul>
+        <li>
+            autoIndex:true/fasle 在应用程序启动时，mo会为您在申明中的每个索引发送一个createIdnex命令，background默认情况下会创建索引。如果你希望禁用自动创建功能并在创建索引的时手动处理，这个要在ensure上调用ensureIndexes方法或者这个功能用原生功能实现。高级的索引好像mongoose不支持。
+        </li>
+        <li>
+            bufferCommands:true/false 当连接断开的时候，mo缓冲区命令直到驱动程序重新连接，要禁用缓冲，需要设置bufferCommands为false。
+        </li>
+        <li>
+            capped:1024 集合的最大大小
+        </li>
+        <li>
+            collection:'data' 此集合的名字
+        </li>
+        <li>
+            id:true,false 默认为每个模式分配一个虚拟的geter，他将文档_id字段强制转换成一个字符，或者objectIds.如果你不希望将id添加到模式中，则可以在模式构建的时候禁用
+        </li>
+        <li>
+            minimize:true false 默认mo会删除空对象来最小化“模式”。可以通过设置false来避免这种情况
+        </li>
+        <li>
+            read:？
+        </li>
+        <li>
+            safe：这个选项被传递给MongoDB和所有操作，并制定是否应该将错误返回给我们的回调，以及调整写入行为。
+        </li
+        <li>
+            shardKey:分片的mg架构时，每个分片集合都有一个分片键，他必须出现在所有出入/更新擦欧总中，只要我们把此模式设置相同的shard键。就会自动就你行
+        </li>
+        <li>
+            strict：默认形况下，没有够构造函数得值是不会保存到mg中的。
+        </li>
+        <li>
+            validateBeforeSave:默认情况下，文档在被保存到数据库之前会自动进行验证。这是为了防止保存无效的文件。如果你想手动处理验证，并且能够保存为通过验证的对象，可以将值设置为false.
+        </li>
+        <li>
+            collation: 为每个查询和聚合设置默认排序
+            <ul>
+                <li>
+                    
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<base href="http://localhost:3000">
+	<!-- 这个base将影响HTML文档中所有的相对URL.而不只是里面设置的form表单。 -->
+	<style>
+		h1{
+			color:red !important;
+			float: left;
+			overflow: hidden;
+			font-size: 2em;
+			/*这里涉及到了css元素的相对单位*/
+
+			/*em:其相对大小是和元素字号挂钩的*/
+			/*ex:*/
+			/*rem:和根元素的字号挂钩*/
+			/*px:css像素挂钩（显示器显示设备的分辨率）浏览器现在是在把他当成绝对单位来看的，所以才会出现不兼容的地方*/
+			/*%:另一个属性的值的百分比*/
+
+
+			/*这三个特别需需要注意的单位vw,vh,vm是以当前视口为参照物的*/
+
+
+		}
+	/*这里是继承最早了解到的地方，现在才注意到。在css中，如果浏览器在直接相关的的样式中找不到某个属性的值，就会求助于继承机制，使用父元素的这个样式属性值。关于继承：有关元素外观(颜色，字体)等才会继承，与元素在页面上布局有关的样式不会被继承。*/
+	</style>
+
+</head>
+<body>
+	<h1 contenteditable="true" contextmenu dir="rtl" lang="en" title="这里面还藏了一个title没想到吧">
+	<!-- 可以修改网页内容 -->
+	<!-- dir:文字排列方向,浮动方向-->
+	<!-- lang:说明元素使用的语言 -->
+		注册开始
+	</h1>
+	<br>
+	<!-- 顺便回忆一下h5表单 -->
+	<form action="/user/zhuce" method="POST" enctype="application/x-www-form-urlencoded" autocomplete="on" target="_blank">
+	<!-- 如果不加action这个属性，就会把信息发送到用于加载该页面的url，好像这个还很牛逼 -->
+
+	<!-- enctype:指定了浏览器发送给服务器的数据采用的编码格式。默认设置不能发送文件到服务器。 -->
+	<!-- multipart/form-data:发送文件 -->
+	<!-- text/plain -->
+
+
+	<!--设置表单自动完成，也可以给单个input添加 -->
+
+	<!-- target:返回的反馈信息的显示位置。类似于A标签。_blank：新页面，_parent:父，_self:当前窗口中,_top:顶层窗口 -->
+
+	<!-- 表单也可以加name属性，用来区别不同的表单 -->
+
+	<!--  -->
+		<label for="name">name<input type="text" placeholder="账号名" name="infoName" id="name" autofocus="on" accesskey="tab"></label><br><hr>
+		<!-- name:只有设置了name属性的表单元素才能在提交表单的时候传递他们的值。单独的在一个网页里面，一个控件是否设置他的name属性是不会影响到网页的功能实现的，但是，当我们需要把这个控件所关联的数据传递到数据库时，就必须要要设置name属性，否则，这个值是没办法传到服务器上面保存的。 -->
+		<!-- name2:name是一个人的姓名，同名的可能有很多，id是一个人的身份证，这就是一个唯一的标识，决不能重复。 -->
+		<!-- name3:并不是所有的控件都会显示value,name值checkbox,radio,hidden.定义控件的name和value就可以在服务器上获取这个控件和他的值 -->
+		<!-- 控件不定义name/value也可以显示，只是为了方便在服务器接受的区别而以 -->
+
+
+		<!-- autofocus只能用在一个元素上面，如果给多个元素加了的话，那么则会导致作用于最后一个 -->
+
+		<!-- accesskey属于h5新加的全局属性：用于添加快捷键，但是表格添加的时候已经有了默认的了-->
+		<!-- tab切换焦点，tabindex属性可以改变转移顺序 -->
+		<label for="password">password<input type="password" placeholder="输入密码" name="password" id="password" required></label><br><hr>
+		<label for="passwordTwo">another<input type="password" placeholder="再次确认密码" name="passwordTwo" id="passwordTwo" disabled></label><br><hr>
+		
+
+
+
+		<fieldset>
+		<!-- 给表单分组 -->
+			<legend>information</legend>
+			<label for="age">age<input type="number" placeholder="年龄" name="age" id="age" list="agelist" min="1" max="100" step="10"></label><br><hr>
+		<!-- 另一种获取数值的方法 -->
+			<!-- <input type="range" min="0" max="100" value="50" step="10"> -->
+
+
+			<label for="city">city <input type="text" id="city" size="10" maxlength="10" value="北京"></label><br><hr>
+			<!-- text里面的常用额外属性 -->
+			
+			<!-- <label for="student">是否大学毕业<input type="checkbox" name="student" id="student"></label> -->
+			<!-- 布尔值的选项 -->
+			<label for="job">
+			··职业
+				<select name="job" id="">
+					<option value="student">
+						student
+					</option>
+					<option value="worker">worker</option>
+					<option value="others">others</option>
+				</select>
+			</label>
+			<label for="phone">phone
+				<input type="number" minlength="11" name="phone">
+			</label>
+			<hr>
+
+
+
+			<!-- 一组固定里面选一些 -->
+			<!-- <h2>选择一些你可能感兴趣的东西</h2>
+			<label for="apple">
+				<input type="radio" value="apple" id="apple" required name="apple">apple
+			</label>
+			<label for="orange">
+				<input type="radio" value="orange" id="orange">branana
+			</label>
+
+			<label for="branana">
+				<input type="radio" value="branana" id="branana">orange
+			</label> -->
+			
+
+			<!-- info -->
+			<label for="info">
+			<!-- 开始拼写检查 -->
+				<textarea name="info" id="info" cols="30" rows="10" spellcheck="true">
+				
+				</textarea>
+			</label>
+			<hr>
+			<!-- agelist -->
+			<datalist id="agelist">
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="30">30</option>
+			</datalist>
+		</fieldset>
+		
+
+		<fieldset>
+			<button type="submit">提交</button>
+			<input type="submit" value="提交">
+			<!-- 区别就是前面的可以在里面加汉字信息 -->
+
+
+
+			<!-- 
+			type=submit:出发了表单提交的选项，他可以有一系列的属性来替代上面的form里面有关提交的属性 -->
+
+			<button type="reset">清空</button>
+			<button type="button">button</button>
+			<!-- type=button:他仅仅是一个按钮，没有其他复杂的用法 -->
+		</fieldset>
+
+		<fieldset>
+			<!-- <legend>新增input-type类型</legend>
+			<input type="color">
+			<hr>
+			<input type="date">
+			<hr>
+			<input type="email">
+			<hr>
+			<input type="url">
+			<hr>
+			<input type="tel">
+			<hr>
+			<input type="search" id="search" name="search">
+			<hr>
+			<input type="hidden" name="recordId" value="1234567"> -->
+
+			<!-- 用input元素生成图像按钮和分区响应图 -->
+			<!-- <input type="image" src="1.png" alt="1.png" name="submit"> -->
+			<!-- 此时点击这张图片就会发送表单，而且还会发送点击这张图片的坐标 -->
+			<!-- <input type="file" name="filedata" multiple accept=""> -->
+			<!-- 可以一次上传多个图片，接受的上传类型 -->
+
+
+			<!-- datalist搭配option -->
+			<!-- select搭配option -->
+
+			<!-- <select name="fave" id="" multiple>
+				<option value="apple">apple</option>
+				<option value="orange">orange</option>
+				<option value="branana">branana</option>
+			</select>
+
+
+			<hr>
+			<textarea name="story" id="" cols="30" rows="10" wrap="hard"></textarea> -->
+
+		</fieldset>
+	</form>
+</body>
+</html>

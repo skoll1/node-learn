@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>
+			buffer是一个典型的js和c++结合的模块，他将性能部分用c++实现，非性能部分用js实现。
+		</li>
+		<li>
+			真正的内存是Node的c++层面上提供的，js层面只是负责使用它，当进行小而频繁的buffer操作时，采用slab的机制进行预先申请和事后分配，对于大的buffer而言，直接使用c++层面提供的内存，无需细腻的分配操作。
+		</li>
+		<li>
+			buffer的转化
+		</li>
+		<li>
+			buffer拼接
+			<ul>
+				<li>
+					正确拼接buffer。
+				</li>
+			</ul>
+		</li>
+		<li>
+			buffer性能
+			<ul>
+				<li>
+					字符串的长度与缓存区的长度：
+					<ul>
+						<li>字符串的长度：以文字作为一个单位</li>
+						<li>
+							字符串对象一旦创建就不能改变
+						</li>
+						<li>缓存区的长度：以缓存区中的字节作为一个基本单位</li>
+						<li>
+							buffer对象是可以改变的。
+						</li>
+						<li>
+							buf.slice()。取出一部分数据，但是是和原来的东西共享数据，改变是同步的。
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<h1>buffer对象与字符串对象之间的互相转换</h1>
+	<ul>
+		<li>
+			---字符串toString()
+		</li>
+		<li>
+			buffer里面插入字符串----buf.write
+		</li>
+		<li>
+			----json对象
+		</li>
+	</ul>
+	<h1>Buffer方法</h1>
+	<ul>
+		<li>
+			Buffer.isBuffer()
+		</li>
+		<li>
+			Buffer.bytelength():一个字符串的字节数
+		</li>
+		<li>
+			Buffer.concat():拼接Buffer
+		</li>
+		<li>
+			Buffer.isEncoding()
+		</li>
+	</ul>
+
+</body>
+</html>

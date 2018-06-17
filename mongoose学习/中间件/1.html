@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>用法</h1>
+    <ul>
+        <li>
+            对于原子化模型逻辑非常有用
+        </li>
+        <li>
+            复杂的验证
+        </li>
+        <li>
+            删除相关文档
+        </li>
+        <li>
+            异步默认值
+        </li>
+        <li>
+            异步任务，某个动作触发
+        </li>
+        <li>
+            使用场景
+            <ul>
+                <li>
+                    doc方法上：init,validate,save,remove
+                </li>
+                <li>
+                    model上：count,find,findOne,findOneAndRemove,findOneAndUpdate,uodate
+                </li>
+            </ul>
+        </li>
+        <li>
+            串行使用：执行完一个方法，下一个使用next()调用
+        </li>
+        <li>
+            并行：提供更加细粒度的操作
+        </li>
+    </ul>
+    <h1>简介</h1>
+    <ul>
+        <li>
+            pre:在指定方法执行前进行绑定
+        </li>
+        <li>
+            post:相当于事件监听的绑定，操作之后调用
+        </li>
+        <li>
+            中间件就像java中的过滤器，拦截器，在执行某个方法前，将其拦截住，也有点像AOP的前置注入。
+        </li>
+        <li>
+            可以把每一个方法都看成中间件么？
+        </li>
+    </ul>
+    <h1>
+        使用
+    </h1>
+    <ul>
+        <li>
+            当调用save方法时，他会自动执行pre，想要并行执行其他中间件，需要加一个true的参数。
+        </li>
+    </ul>
+</body>
+</html>

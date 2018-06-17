@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>add():将关键路径/模式类型对添加到此模式</h1>
+    <ul>
+        <li>
+            var NameSchema=new Schema;
+        </li>
+        <li>
+            NameSchema.add({name:'String',password:'string'})
+        </li>
+        <li>
+            还有这种方法
+        </li>
+    </ul>
+    <h1>clone()</h1>
+    <ul>
+        <li>
+            Schema的克隆模式
+        </li>
+    </ul>
+    <h1>reserved()</h1>
+    <ul>
+        <li>
+            保留文档密匙：这个对象中的键是在模式声明中被拒绝的名字，他们与mongoose功能冲突。使用这些键名将会引发错误。
+        </li>
+        <li>
+            on,emit,_events,db,set,get,init,isNew,errors,schema,options,modelName,collection,_pres,_pots,toObject
+        </li>
+        <li>
+
+        </li>
+    </ul>
+    <h1>
+        path()：获取或设置模式路径
+    </h1>
+    <ul>
+        <li>
+            schema.path('name');获取这个模式的值
+        </li>
+        <li>
+            schema.path('name',Number):重新设置模式
+        </li>
+    </ul>
+    <h1>为此模式定义一个索引</h1>
+    <ul>
+        <li>
+            schema.index({first:1,last:-1})
+        </li>
+    </ul>
+    <h1>set()设置架构的options</h1>
+    <ul>
+        <li>
+            schema.set('strict'):dfault:true
+        </li>
+    </ul>
+    <h1>get()获取一个架构选项</h1>
+    <ul>
+        <li>
+            schema.get('strict')
+        </li>
+    </ul>
+    <h1>indexes():返回此架构的索引列表</h1>
+    <ul>
+        <li>
+            schema.indexs()
+        </li>
+    </ul>
+    <h1>remove():删除给定的</h1>
+</body>
+</html>

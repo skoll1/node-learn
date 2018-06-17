@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>启动</h1>
+    <ul>
+        <li>
+            基本启动方式：mongod 必须指定文件路径，或者保证默认的/data/db存在并且有访问权限，只要有这两个就可以启动服务了。
+        </li>
+
+    </ul>
+    <h1>插入细节</h1>
+    <ul>
+        <li>
+            不要预先创建一个集合，在第一次插入数据时会自动创建。
+        </li>
+        <li>
+            _id：是自有产物。存储在MongoDB集合的每个文档中，这个主键名称是固定的。可以是mg支持的任何数据类型，默认是ObjectId。在关系数据库中，主键大多数是数值的，比如long和int.并且主键的取值通常是由数据库自增实现的，这种有序的主键也表示了某种逻辑，但是在mg中，不支持自增组件，值得注意的是，他是可以自定义的。
+        </li>
+    </ul>
+    <h1>查询</h1>
+    <ul>
+        <li>
+            所有指令都为shell.
+        </li>
+        <li>
+            普通查询 db.things.find()
+        </li>
+        <li>
+            条件查询
+            <ul>
+                <li>
+                    db.things.find({x:4},{j:true}):返回x=4，并且只返回列J的值。
+                </li>
+                <li>
+                    db.things.findOne({x:4}):新的接口可以避免游标带来的开销。他返回的是游标里面的第一条数据，或者返回null.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h1>高级查询</h1>
+    <ul>
+        <li>
+            db.collection.find({"age",{$gt:15}}): age大于15的数据
+        </li>
+        <li>
+            db.collection.find({"age",{$lt:14}}): age小于15的数据
+        </li>
+        <li>
+            db.collection.find({"age",{$lte:15}}): age小等于15的数据
+        </li>
+        <li>
+            db.collection.find({"age",{$gte:15}}): age大等于15的数据
+        </li>
+        <li>
+            db.collection.find({"age",{$gte:20,$lte:40}})  age大等于20小于40的数据
+         </li>
+         <li>
+             db.collection.find({age:{$all:[6,8]}}) 匹配所有的括号内的值
+         </li>
+         <li>
+             包含： db.things.find({age:{$in:[10,20,40]}})
+         </li>
+         <li>
+             不包含 db.things.find({age:{$nin:[7,8]}}) 不再7，8之内
+         </li>
+         <li>
+             判断某个字段是否存在  db.collection.find({name:{$exists:true}}) 返回所有有这个字段的数据
+         </li>
+         <li>
+             null值处理：
+         </li>
+         <li>
+             db.test.find({age:{$mod:{10,1}}})  取膜
+         </li>
+         <li>
+             db.test.find({age:{$ne3}})    age!==3的值
+         </li>
+         <li>
+             查询的记录数目 db.thing.find().count()
+         </li>
+         <li>
+             返回限制返回记录的起点 db.things.skip(2).limit(5);从第二条开始选第五条记录
+         </li>
+         <li>
+             db.things().sort({age:1})  按照年龄升序排队。
+         </li>
+         <li>
+             db.things().distinct("name")  取出所有不重复的数据
+         </li>
+    </ul>
+    <h1>查询语法</h1>
+    <ul>
+        <li>
+            MongoDB最大的特点，他支持的查询语言非常强大，不仅可以实现关系型数据库的查询的大部分功能，而且还支持对数据建立索引。就是说他不仅支持强大的数据结构，而且还支持非常强大的查询语法。
+        </li>
+        <li>
+            查询数组的内容 db.things.find()
+        </li>
+        <li>
+            查询对象内的方法
+        </li>
+        <li>
+            正则表达式匹配
+        </li>
+        <li>
+            联合查询
+            <ul>
+                <li>
+                    简单手工关联
+                </li>
+                <li>
+                    DBref方式关联
+                </li>
+
+            </ul>
+        </li>
+    </ul>
+    <h1>修改记录</h1>
+    <ul>
+        <li>
+            db.things.update({})
+        </li>
+
+    </ul>
+    <h1>高级更新</h1>
+    <ul>
+        <li>
+            在实际场景中，使用更新操作符，可以将用户的交互行为快速的保存到MongoDB中，以便后期执行统计分析和个性化定制。
+        </li>
+        <li>
+            update
+        </li>
+        <li>
+            save
+        </li>
+    </ul>
+    <h1>删除记录</h1>
+    <ul>
+        <li>
+            db.things.remove({})
+        </li>
+    </ul>
+    <h1>游标和存储过程</h1>
+    <ul>
+        <li>
+            用来存放SQL语句的执行结果，在数据库中，游标提供了一种对从表中检索出的数据进行操作的灵活手段
+        </li>
+        <li>
+            var c=db.things.find():c为一个游标区
+        </li>
+    </ul>
+    <h1>存储数据</h1>
+    <ul>
+        <li>
+            存储过程可以实现接收和输出参数，返回执行存储过程的状态值，也可以嵌套调用。
+        </li>
+        <li>
+            每次返回都要给出一个值。 db.c1.count()。就是这个表的总数。
+        </li>
+        <li>
+            优点
+            <ul>
+                <li>
+                    存储过程使用流程控制语句来写，有很强的灵活性。
+                </li>
+                <li>
+                    通过存储过程可以使相关的动作同时发生，维护数据库的完整性，可以及时响应数据
+                </li>
+                <li>
+                    当企业规则发生改变的时候，只需要在服务器中改变存储过程即可，无需修改任何的应用程序。
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

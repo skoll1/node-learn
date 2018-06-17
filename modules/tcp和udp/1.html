@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<h1>tcp客户端和tcp服务器端</h1>
+	<ul>
+		<li>
+			net模块实现tcp之间的通信
+		</li>
+		<li>
+			创建tcp客户端,他们可以是分开的，跳过浏览器可以自己操作。这是更底层的操作
+		</li>
+		<li>
+			tcp服务器与tcp客户端建立连接之后，tcp服务器可以使用该客户端相连接的socket端口对象的end方法来关闭该客户端连接。
+		</li>
+		<li>
+			我好像暂时用不到这个东西。
+		</li>
+		<li>
+			服务器：net.createServer();
+		</li>
+		<li>
+			客户端：var client=new net.Socket()
+		</li>
+		<li>
+			注意一下最后一个ack包
+		</li>
+		<li>
+			默认情况下，allowHalfOpen属性为false,tcp服务器接收到客户端的fin包将会回发一个ack包，确认自己收到了关闭连接，服务端将同步关闭连接，客户端接收服务端传来的包，确认服务器端关闭，如果属性为true，那么服务器端将不会发送确认的包但是服务器仍然可以发送消息。
+		</li>
+	</ul>
+<h1>udp</h1>
+<ul>
+	<li>
+		udp不是面向连接的，常用在偶尔丢一两个包也无伤大雅的场景，视频，音频，dns服务
+	</li>
+	<li>
+		在网络中发送的每个数据包都有一个TTL值，time to live，用于表示一个数据包的生存时间，每个路由器或者网关在转发一个数据包的时候都会消耗该数据包的一些TTL值，如果该数据包的值被消耗为0，那么则意味着这个包将被丢弃。
+	</li>
+	<li>
+		广播事件和组播事件。
+	</li>
+</ul>
+</body>
+</html>

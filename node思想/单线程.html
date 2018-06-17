@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>
+			优点：
+			<ul>
+				<li>
+					不用在意状态同步问题
+				</li>
+				<li>
+					死锁
+				</li>
+				<li>
+					没有线程上下文交换带来的性能开销。
+				</li>
+			</ul>
+		</li>
+		<li>
+			弱点：
+			<ul>
+				<li>
+					无法利用多核CPU:
+				</li>
+				<li>
+					一旦发生错误就会引起整个应用退出
+				</li>
+				<li>
+					大量计算占用的CPU导致无法继续调用异步IO:child_process.c++扩展
+				</li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>

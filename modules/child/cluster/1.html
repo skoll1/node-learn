@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>worker</h1>
+	<ul>
+		<li>
+			cluster属性
+			<ul>
+				<li>
+					isMaster:运行在主线程为true
+				</li>
+				<li>
+					isWorker:运行在子线程为true
+				</li>
+				<li>
+					workers:获取所有子进程中运行的weoker对象。
+				</li>
+				<li>
+					在子进程中使用cluster.worker属性值获取当前子进程中运行的实例对象
+				</li>
+				<li>
+					cluster.worker.process获取子进程
+				</li>
+			</ul>
+		</li>
+		<li>
+			
+		</li>
+	</ul>
+	<h1>多进程作用</h1>
+	<ul>
+		<li>
+			当在子进程中运行服务器之后，客户端请求先是被主进程接受，然后转发给子进程中的服务器，如果在多个子进程中运行服务器，当主进程接收到客户端请求之后，将会自动分配给一个处于空闲状态的子进程，只执行该进程指定的服务器对象的request事件回调函数
+		</li>
+		<li>
+			同时，因为这些进程各自都是独立的，所以可以根据实际需求选择是否将其关闭。每个进程都是相互独立的，
+		</li>
+	</ul>
+</body>
+</html>

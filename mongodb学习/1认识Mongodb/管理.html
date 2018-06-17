@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>数据的迁移</h1>
+    <ul>
+        <li>
+            mongoexport 
+        </li>
+        <li>
+            mongoimport
+        </li>
+        <li>
+            mongodump:数据备份：mg将所有的数据存储在数据目录中，默认为data/db,那么就是将所有的数据目录下的文件拷贝出来用于备份。对于运行的mg来说，采取拷贝文件
+            的方法备份并不安全，这样的备份文件可能会损坏，除非服务器完成了一个完整的内存数据与硬盘同步，并且对数据库加锁不允许读写操作，除非关闭服务器进行备份。
+        </li>
+        <li>
+            实现原理：首先对运行中的mg服务进行查询，然后将所有的数据读入磁盘，由于mongodump只是一个普通的客户端，那么可以对线上的服务器进行备份，即使服务器在
+            处理其他请求或者在执行写操作，但备份出来的数据可能是不完整的。基本的方法就是在某个时刻锁住数据库，那这样不行了吧。
+        </li>
+        <li>
+            最常用的方式：主从复制是mg里最常用的模式，数据自动从master服务器复制到slave服务器，slave服务器一直保持一份和master数据库同步的数据。因为系统不需
+            要依赖slave服务器，所以上边提到的3中备份方式都可以使用
+        </li>
+        <li>
+            mongostore:恢复工具
+        </li>
+        <li>
+            如果mg是不正常关闭的时候，当下次开启的时候会出现警告，恢复所有数据的方式就是在启动数据库的时候加上 --repair 参数。
+        </li>
+    </ul>
+    <h1>管理命令</h1>
+    <ul>
+        <li>
+            故障消除
+            <ul>
+                <li>
+                    如何从技术支持人员那里知道获取帮助
+                </li>
+                <li>
+                    如何利用相关资源快速解决问题故障
+                </li>
+            </ul>
+        </li>
+        <li>
+            减少停机时间
+            <ul>
+                <li>
+                    通过减少停机时间来提供连续服务是评判数据系统好坏的重要标准，应该积极住的那个的防止可以避免的停机
+                </li>
+            </ul>
+        </li>
+        <li>
+            建立备份和恢复策略
+            <ul>
+                <li>
+                    克隆collection
+                    <ul>
+                        <li>
+                            远程克隆 db.runCommand({cloneCollection:"test.t1",from:"IP地址"})
+                        </li>
+                        <li>
+                            并没有本地克隆
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    复制数据库
+                    <ul>
+                        <li>
+                            为应用开发小组提供用于编程和测试的模拟数据库
+                        </li>
+                        <li>
+                            为DBA提供用于测试和验证额备份与恢复的模拟数据库
+                        </li>
+                        <li>
+                            在没有完备的备份策略的时候，定时执行此命令可以起到一定的数据库故障恢复作用
+                        </li>
+                        <li>
+                            远程复制
+                        </li>
+                        <li>
+                            本地复制
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h1>查询mg的指令 db.listCommands()</h1>
+   <h1>刷新磁盘</h1>
+   <ul>
+       <li>
+           db.runCommand({fsync:1}):将尚未写入内存的数据写入磁盘，并锁住对数据路的更新操作，但是读参数是可以继续的
+       </li>
+   </ul>
+   <h1>
+       捕获异常
+   </h1>
+   <h1>
+       进程控制
+   </h1>
+   <p>
+       db.currentOp() 查看系统进程是在干什么
+   </p>
+   <h1>验证collection的有效性</h1>
+   <ul>
+       <li>
+           db.things.validate():返回的信息中，valid的值可以判断此表是否有效。
+       </li>
+   </ul>
+   <h1>
+       数据压缩
+   </h1>
+   <ul>
+       <li>
+           db.repairDatabase():压缩数据库
+       </li>
+       <li>
+           db.things.storageSize():压缩之后的存储空间大小
+       </li>
+       <li>
+           db.things.totalSize():压缩之后的数据索引以及索引空间大小。
+       </li>
+   </ul>
+</body>
+</html>

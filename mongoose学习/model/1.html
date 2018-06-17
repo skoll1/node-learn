@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>model是我们从scheme定义编译的构造函数，这些模型的实例代表我们可以从数据库中保存和检索的文档，动数据库中创建和检索所有文档都由这些模型处理</h1>
+    <h2>文档:model的实例</h2>
+    <ul>
+        <li>
+            mongoose文档代表了存储在MD中的文档的一对一印射。每一个文档都是其mdel的一个实例
+        </li>
+        <li>
+            model才是操作数据库最直接的内容
+        </li>
+        <li>
+            model的创建实际上就是方法的copy，将schema上的方法copy到model上，只是copy的位置不一样，一部分在prototype上，一部分在constructor中
+        </li>
+    </ul>
+
+</body>
+</html>

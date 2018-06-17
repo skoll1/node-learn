@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>数据的几个阶段</h1>
+    <h2>schema</h2>
+    <ul>
+        <li>
+            定义数据库的结构。
+        </li>
+        <li>
+            定义文档的实例方法
+        </li>
+        <li>
+            定义文档的静态模型方法
+        </li>
+        <li>
+            定义符合索引
+        </li>
+        <li>
+            每一个schema都会印射到mongodb中的一个collection中，但是他不具备操作数据库的能力
+        </li>
+        <li>
+            methods:扩展内置方法，类似save()这种程度的，给new model实例之后使用的方法。注意不要定义那些和原本一样的方法。
+        </li>
+        <li>
+            statics:给model添加静态方法
+        </li>
+    </ul>
+    <h2>model</h2>
+    <ul>
+        <li>
+            由schema编译成的构造器，具有抽象的属性和行为，可以对数据库进行增删改查
+        </li>
+        <li>
+            可以对数据库造成影响
+        </li>
+    </ul>
+    <h2>new model之后的document</h2>
+    <ul>
+        <li>
+            model的每一个实例就是一个文档document
+        </li>
+        <li>
+            可以对数据库造成影响
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>简述</h1>
+    <ul>
+        <li>
+            类似于关系型数据库，都是为了提高查询和排序效率（排序效率是从哪里提高的？），由于集合中的建可以是普通数据类型，也可以是子文档类型，mg可以在各种类型的键上创建索引。    
+        </li>
+        <li>
+            mg索引就是集合collection里面的key字段，一般会有的默认索引_id，这是唯一也是不能删除的索引，自己也可以手动给某个索引指定唯一性。
+        </li>
+        <li>
+            新建索引之后，每次写操作（插入，更新，删除）文档都需要更新索引，虽然mg上限制每个集合最多只能有64个索引，但是通常在一个特定的集合上，不应该有两个以上的索引。
+        </li>
+        <li>
+            数据排序还可以这样：db.users10W.find().sort({"age": 1 , "username" : 1}).limit(1000) 两个一起来--首先对age进行排序，然后是对username排序，为了避免单次操作超过限制内存32M,所以在以下的操作使用的user集合数据量为10W.
+        </li>
+        <li>
+            这应该是最简单的索引吧。db.users10W.ensureIndex({"age":1,"username":1}) 1表示增序排列，竟然还是个复合索引。。
+        </li>
+        <li>
+            不管是符合索引还是简单索引，在使用正确的时候，都大大加快了查询速度
+        </li>
+        <li>
+            从3.0版本后使用 db.collection.createIndex()代替db.collection.ensureIndex()
+        </li>
+    </ul>
+    <h1>索引构建情况分析</h1>
+        <ul>
+            <li>
+                mongostat工具来监控
+            </li>
+            <li>
+                profile集合介绍
+            </li>
+            <li>
+                日志介绍
+            </li>
+            <li>
+                explain分析
+            </li>
+        </ul>
+        <h1>新概念</h1>
+        <ul>
+            <li>
+                索引边界：
+            </li>
+        </ul>
+</body>
+</html>

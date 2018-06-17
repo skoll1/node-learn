@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>优雅的关机</h1>
+    <p>
+        在生产环境中，可能需要等待处理剩余的查询或关闭所有的连接。 以良好的方式关闭一个应用程序，你可以捕获SIGNT信号，并执行操作来等待/清除所有这些状态
+    </p>
+    <h1>
+        无状态应用
+    </h1>
+    <p>
+        确保你的应用程序是无状态的,就是说没有本地数据存储在过程中，例如会话/websocket.确保使用redis.Mongo或其他数据库在进程之间共享。
+    </p>
+    <ul>
+        <li>
+            问题：如何确保无状态应用的搭建
+        </li>
+        <li>
+            有的时候你需要等待你的应用程序建立与DB/cache/worker的链接，在申请之前pm2需要等待online.\
+            所以可以在需要等待的程序开启这时候发送一个标识 process.send('ready');
+        </li>
+        
+    </ul>
+</body>
+</html>

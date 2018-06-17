@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>
+			setTimeout,setInterval
+			<ul>
+				<li>
+					原理：实现原理和异步IO比较相似，但是不需要IO线程池的参与，调用这个函数会创建一个观察者的红黑树中，每次循环时，都会从该树中取出定时器对象，检查是否超过固定时间，如果超过，就形成一个事件，回调函数执行。
+				</li>
+			</ul>
+		</li>
+		<li>
+			process.nextTick:立即执行异步函数类似setTimeout(fn(),0);
+		</li>
+		<li>
+			setmmediate();效果和上面的一样，但是优先级小于下面的。
+		</li>
+	</ul>
+</body>
+</html>

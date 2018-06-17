@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        pm2的优点
+    </h1>
+    <ul>
+        <li>
+            内建了负载均衡
+        </li>
+        <li>
+            后台运行
+        </li>
+        <li>
+            0秒停机重载，维护的时候不需要停机
+        </li>
+        <li>
+            停止不稳定的进程
+        </li>
+        <li>
+            控制台检测
+        </li>
+        <li>
+            提供 http api
+        </li>
+    </ul>
+    <h1>
+        简单命令
+    </h1>
+    <ul>
+        <li>
+            pm2 list 查看运行状态
+        </li>
+        <li>
+            pm2 monit 查看应用资源的事实运行情况
+        </li>
+        <li>
+            pm2 describe 0 查看一个应用的详细部署状态
+        </li>
+        <li>
+            pm2 log 查看日志
+        </li>
+        <li>
+            pm2 stop app.js 
+        </li>
+        <li>
+            pm2 web 
+        </li>
+        <li>
+            pm2 show 0 获取特定进程的更多详细信息
+        </li>
+        <li>
+            pm2 prettylist 输出一个当前进程的json文件
+        </li>
+        <li>
+            pm2 flush:清除所有日志文件
+        </li>
+        <li>
+            pm2 reloadLogs：重装
+        </li>
+        <li>
+            pm2 stop all
+        </li>
+        <li>
+            pm2 restart all
+        </li>
+        <li>
+            pm2 updatePM2
+        </li>
+        <li>
+            环境切换
+            <ul>
+                <li>
+                    开发环境
+                </li>
+                <li>
+                    测试环境
+                </li>
+                <li>
+                    生产环境
+                </li>
+            </ul>
+        </li>
+        <li>
+            pm2 delete 0 删除一个进程
+        </li>
+        <li>
+            负载均衡  pm2 start app.js -i max
+        </li>
+        <li>
+            开机自启动
+        </li>
+        <li>
+            远程部署
+        </li>
+        <li>
+            超过一定内存自动重启   pm2 start big-array.js --max-memory-restart 20M
+        </li>
+        <li>
+            pm2编程接口
+        </li>
+        <li>
+            模块扩展
+        </li>
+
+    </ul>
+    <script>
+        {
+                "name"        : "fis-receiver",  // 应用名称
+                "script"      : "./bin/www",  // 实际启动脚本
+                "cwd"         : "./",  // 当前工作路径
+                "watch": [  // 监控变化的目录，一旦变化，自动重启
+                    "bin",
+                    "routers"
+                ],
+                "ignore_watch" : [  // 从监控目录中排除
+                    "node_modules", 
+                    "logs",
+                    "public"
+                ],
+                "watch_options": {
+                    "followSymlinks": false
+                },
+                "error_file" : "./logs/app-err.log",  // 错误日志路径
+                "out_file"   : "./logs/app-out.log",  // 普通日志路径
+                "env": {
+                    "NODE_ENV": "production"  // 环境参数，当前指定为生产环境
+                }
+                }
+    </script>
+</body>
+</html>

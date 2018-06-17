@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>关闭浏览器session消失的情况</h1>
+    <p>
+        浏览器的到服务器传过来的sessioId后把他放到自己的内存里面，不同的浏览器有不同的进程，ie的进程之间是不能
+        共享sessionId，也就是新开的一个Ie将不能共享这个sessionId，而火狐是可以共享的。当继续发送这个请求的时候
+        浏览器会把这个session放到请求头里面发送给该服务器，这样服务器得到sessionId后在和自己内存里面存放的信息
+        对比锁定客户端，从而区分不同的客户端。
+    </p>
+    <p>
+        值得注意的是，如果用户在会话过程中关闭浏览器结束进程，那么这个sessioId将会消失，如果用户又打开浏览器想要
+        继续会话的时候，就会因为发送的请求中没有这sessionId而使服务器无法辨认该把那个session信息给他，但是这个时
+        侯服务端的session和sessionId所指向的session是都存在的。只不过没有正确的session信息给他，只有session过期
+        或者服务器重启才会释放内存。
+    </p>
+    <p>
+        以上实现会话的方式叫做会话cookie，把cookie放在浏览器内存中，只能在这个浏览器内存的范围内完成会话，是一种
+        不长久的方式，为了实现持久会话，就出现了持久化cookie，把cookie放在用户的计算机上，现在的cookie不单单可以
+        存放session，还能放用户信息，样式表信息等。
+    </p>
+    <p>
+        如果用户禁止了所有cookie的使用，那么会话cookie和持久化cookie都不能使用了，那么剩下的方案就是url重写，但是这个
+        只能实现会话cookie的效果，持久会话是实现不了的。
+    </p>
+    <p>
+        由于session是基于Cookie的，浏览器发起请求会携带sessionId到服务器，所以在此时浏览器的cookie
+    </p>
+    <h1>
+        session的生命周期
+    </h1>
+    <ul>
+        <li>
+            结束
+            <ul>
+                <li>
+                    服务器默认30分钟的生命时间值，若在这个时间内，为被访问服务器时就会自动结束生命。
+                </li>
+                <li>
+                    session自杀：调用session.invalidate()可以立即杀死session。
+                </li>
+                <li>
+                    服务器意外关闭（服务器正常关闭的时候session是会被服务器保存在服务器的session文件中）
+                </li>
+            </ul>
+        </li>
+        <li>
+            假象的原因：由于session是基于Cookie的。浏览器发起请求会携带sessionId到服务器，服务器根据这个id
+            来判断当亲访问的是那个session
+        </li>
+        <li>
+            然而浏览器被关闭之后由于浏览器的cookie文件还未设置Max-age值，所以此时的cookie是会话级别的，是存在
+            浏览器的内存中，当浏览器被关闭之后内存被释放，临时文件被删除，此时的cookie也就被销毁，那么当前这个
+            请求中没有之前那个sessionId值，服务器就当第一次访问，给浏览器创建一个新的session值，并返回一个null。
+            之前的session并没有被干掉，只是浏览器找不到这个sessionid。这样一来，此时服务器会存在两个session。
+        </li>
+        <li>
+            
+        </li>
+    </ul>
+</body>
+</html>

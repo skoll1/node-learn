@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+    <h1>http服务器和http客户端</h1>
+    <ul>
+    	<li>
+    		服务器就是常用的服务器
+    		http.createServer()
+    	</li>
+    	<li>
+    		客户端就是可以当爬虫和代理服务器
+    		http.request()
+    	</li>
+    	<li>
+    		和tcp，udp一样的。
+    	</li>
+    </ul>
+	<h1>自创静态文件访问成功</h1>
+	<h2>favicon.ico事件</h2>
+	<ul>
+		<li>
+			req参数
+			<ul>
+				<li>
+					method
+				</li>
+				<li>
+					url
+				</li>
+				<li>
+					headers
+				</li>
+				<li>
+					httpVersion
+				</li>
+				<li>
+					trailers
+				</li>
+				<li>
+					socket:该属性值为服务器端用于监听客户端请求的socket对象。
+				</li>
+
+			</ul>
+		</li>
+	</ul>
+	<form action="http://localhost:8080/" method="POST">
+			<input type="text" name="name">
+			<input type="number" name="age">
+			<input type="submit" value="提交">
+			<h1>构造出这样的字符串</h1>
+	</form>
+<hr>
+	<form action="http://localhost:8080/" method="get">
+		<input type="search" placeholder="name" name="name">
+		<input type="search" placeholder="age" name="age">
+		<h1>构造出查询字符串</h1>
+		<input type="submit">
+	</form>
+	<h1>
+		quertString:对半残的字符串进行转换。
+	</h1>
+	<ul>
+		<li>
+			url模块和queryString模块
+		</li>
+		<li>
+			查询字符串，从？到#之间
+		</li>
+	</ul>
+	<h1>url：对完整的url进行转换</h1>
+	<h1>response</h1>
+	<ul>
+		<li>
+			content-type:用于指定内容类型
+		</li>
+		<li>
+			location:重定向地址。
+		</li>
+		<li>
+			content-disposition:制定一个被下载的文件名
+		</li>
+		<li>
+			set-cookie
+		</li>
+		<li>
+			content-encoding
+		</li>
+		<li>
+			Cache-Control:开启缓存机制
+		</li>
+		<li>
+			Expires:设置缓存过期时间
+		</li>
+		<li>
+			Etag:用于指定当服务器端响应内容没有变化时不重新下载数据。
+		</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.hide{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>所有的理论都是在这里，指向实践的项目</h1>
+	<ul>
+		<li>
+			schema的建立：express-login-use.js
+		</li>
+	</ul>
+	<div id="jsCountdown">
+    <span id="day">01天</span>
+    <span id="hour">02:</span>
+    <span id="min">03:</span>
+    <span id="second">04</span>
+	</div>
+
+
+	<script type="text/javascript">
+
+		var time=second(1210000);
+//此处填入秒数，测试为3601秒
+render(time);
+//渲染页面
+
+		function render(data) {
+			var day=document.getElementById('day');
+			var hour=document.getElementById('hour');
+			var min=document.getElementById('min');
+			var second=document.getElementById('second')
+		    if(data.day){
+		       day.innerHTML=data.day+"天";
+		    }else{
+		    	day.setAttribute('class','hide');
+		    }
+			if(data.hour<10){
+		    		hour.innerHTML="0"+data.hour+':小时';
+
+		    
+		    }else{
+		    	hour.innerHTML=data.hour+':小时';
+		    }
+			if(data.min<10){
+		    		min.innerHTML="0"+data.min+':分钟';
+
+		    
+		    }else{
+		    	min.innerHTML=data.min+':分钟';
+		    }
+			if(data.second<10){
+		    		second.innerHTML="0"+data.second+':秒';
+		    }else{
+		    	second.innerHTML=data.second+':秒';
+		    }
+		    
+		}
+		function second(second) {
+		    if(second>60){
+		        var min=Math.floor(second/60);
+		    	var seconds=Math.floor(second%60);
+		        
+		        if(min>60){
+		            var hour=Math.floor(min/60);
+		            var mins=Math.floor(min%60);
+		            if(hour>24){
+		            	var day=Math.floor(hour/24);
+		            	var hour=Math.floor(hour%24);
+		            	return {
+		            		day:day,
+		            		hour:hour,
+		            		min:mins,
+		            		second:seconds
+		            	}     
+		            }else if(hour==12){ 
+		            	return {
+		            		day:1,
+		            		hour:0,
+		            		min:mins,
+		            		second:seconds
+		            	}
+		            }else{
+		            	return {
+		            		day:0,
+		            		hour:hour,
+		            		min:mins,
+		            		second:seconds
+		            	}
+		            }
+		        }else if(min==60){
+		            return {
+		                day:0,
+		                hour:1,
+		                min:0,
+		                second:seconds
+		            }
+		        }else{
+		        	return {
+		                day:0,
+		                hour:0,
+		                min:min,
+		                second:seconds
+		            }
+		        }
+		    }else if(second==60){
+		        return {
+		            day:0,
+		            hour:0,
+		            min:1,
+		            second:0,
+		        }
+		    }else{
+		    	return {
+		            day:0,
+		            hour:0,
+		            min:0,
+		            second:seonds,
+		        }
+		    }
+}
+	</script>
+</body>
+</html>

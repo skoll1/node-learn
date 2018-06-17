@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>安全的问题</h1>
+    <ul>
+        <li>
+            使用tls.
+        </li>
+        <li>
+            使用helment
+            <ul>
+                <li>
+                    csp:设置了Content-Security-policy。来帮助你抵挡跨站脚本攻击和其他跨站注入。
+                </li>
+                <li>
+                    hidePoweredBy:移除了X-Powered-By头
+                </li>
+                <li>
+                    hpkp:添加了Publick Key Pinning头来抵挡使用伪造证书的中间人攻击。
+                </li>
+                <li>
+                    hsts：设置了Strict-Transport-Security头来强制使用安全链接
+                </li>
+                <li>
+                    ieNoOpen:为ie8设置了x-Download-Options头
+                </li>
+                <li>
+                    noCache:设置了Cache-Control和pragma头来禁止客户端缓存。
+                </li>
+                <li>
+                    noSniff设置了X-Frame-Options头来阻止浏览器进行MIME嗅探
+                </li>
+                <li>
+                    frameguard:设置了X-frame-Options头来提供对点击劫持的保护
+                </li>
+                <li>
+                    xssFilter:设置了X-XSS-Protection头来启用大多数现代浏览器中的XSS过滤器。
+                </li>
+            </ul>
+        </li>
+        <li>
+            安全的使用cookie，确保不让cookie暴露你的应用的信息。
+            <ul>
+                <li>
+                    express-session:在服务端进行存储session信息，只是存一个session ID。
+                </li>
+                <li>
+                    cookie-session：在客户端进行cookie存储，将整个session序列化至cookie。
+                </li>
+            </ul>
+        </li>
+        <li>
+            确保你的依赖库都是安全的。
+            <ul>
+                <li>
+                    nsp
+                </li>
+                <li>
+                    requireSafe:检查是否安全。
+                </li>
+            </ul>
+        </li>
+        <li>
+            根据node需要考虑的事
+            <ul>
+                <li>
+                    对应用实现一个访问频率抵制机制来抵制暴力破解。express-limiter
+                </li>
+                <li>
+                    使用csrf中间件来抵挡跨站请求伪造
+                </li>
+                <li>
+                    通过使用参数化的查询或预处理语句来抵挡SQL注入
+                </li>
+                <li>
+                    使用sqlmap工具检测应用中可能被SQL注入的地方
+                </li>
+            </ul>
+        </li>
+        <li>
+            关注其他web 漏洞
+        </li>
+    </ul>
+</body>
+</html>

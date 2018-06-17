@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>登录</h1>
+	<form action="denglu" method="POST" enctype="application/x-www-form-urlencoded" autocomplete="on" target="_blank">
+		<input type="hidden" name="_csrf" value="" id="csrf">
+		<label for="name">name<input type="text" placeholder="账号名" name="infoName" id="name" autofocus="on" accesskey="tab"></label>
+		
+		<label for="password">password<input type="password" placeholder="输入密码" name="password" id="password" required></label>
+		<input type="submit">
+	</form>
+	<a href="/auth/github">GIT SIGN</a>
+	<a href="/">home</a>
+	<ul>
+		<li>
+			第三方登录流程
+		</li>
+		<li>
+			用户现在向本地应用发出请求
+		</li>
+		<li>
+			本地应用引导用户跳转到第三方页面
+		</li>
+		<li>
+			第三方返回一个授权页面
+		</li>
+		<li>
+			用户授权成功之后，第三方应用将返回用户的一些基本信息返回给本地应用。
+		</li>
+	</ul>
+	<script type="text/javascript">
+		window.onload=function(){
+			var xhr=new XMLHttpRequest();
+			xhr.open('GET','http://localhost:3000/denglu');
+			xhr.send();
+			xhr.onload=function(data){
+				// console.log(data)
+				var _data=data.target.response;
+				console.log(_data);
+				var csrf=document.getElementById('csrf')
+				csrf.setAttribute('value',)
+			}
+
+			// var  csrf=document.getElementById('csrf')
+			// csrf.setAttribute('value',data.target.response)
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>地理位置索引</h1>
+    <h1>创建</h1>
+    <ul>
+        <li>
+            2d平面位置索引
+        </li>
+        <li>
+            创建方式db.collection.ensureIndex({w:"2d"})
+        </li>
+        <li>
+            插入位置表示方式：经纬度[经度，纬度] [-180,180],[-90,90]
+        </li>
+    </ul>
+    <ul>
+        <li>
+            查找方式
+            <ul>
+                <li>
+                    查找距离某个点一定距离内的点db.location.find({w:{$near:[1,1],maxDistance:10}}) 距离[1,1]最远为10的点
+                </li>
+                <li>
+                    查找包含在某区域内的点 
+                    <ul>
+                        <li>
+                            形状的表示
+                        </li>
+                        <li>
+                            $box:{$box:[x1,y1],[x2,y2]} --查找 db.location.find({w:{geoWithin:{$box:[[0,0],[3,3]]}}}) 
+                        </li>
+                        <li>
+                            $center:{$center:[[x1,y1],r]}
+                        </li>
+                        <li>
+                            $polygon:{$polygon:[[x1,y1],[x2,y2],[x3,y3],[x4,y4]]}
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>
